@@ -32,11 +32,13 @@ jobs:
           error: 'Your first line has to contain a commit type like "[BUGFIX]".'
           checkAllCommitMessages: 'true'
           accessToken: ${{ secrets.GITHUB_TOKEN }}
+          excludeDescription: 'true'
       - name: Check Subject Line Length
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: '^.{0,75}(\n.*)*$'
           error: 'Subject too long (max 75)'
+          excludeDescription: 'true'
       - name: Check Line Length
         uses: gsactions/commit-message-checker@v1
         with:
