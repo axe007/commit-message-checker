@@ -43,3 +43,18 @@ jobs:
           subject_limit: 60
           # Optionally set the body character limit (default `72`)
           body_limit: 100
+          
+      - name: Check Commit Type
+        uses: gsactions/commit-message-checker@v1
+        with:
+          pattern: '\[(BUGFIX|DOCS|FEATURE|TASK)\] .+$'
+          error: 'Your first line has to contain a commit type like "[BUGFIX]".'
+          checkAllCommitMessages: 'true'
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
+          excludeDescription: 'true'
+
+      - name: Check for Resolves / Fixes
+        uses: gsactions/commit-message-checker@v1
+        with:
+          pattern: '\s*(Implements|Contributes|Resolves|Fixes)\s*:?\s*(#\d+|github\.com\/axe007\/[a-z-.]*#\d+)'
+          error: 'You need at least one "Implements|Contributes|Resolves|Fixes: #<issue number>" line.'
