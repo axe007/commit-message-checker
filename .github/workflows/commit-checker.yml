@@ -38,8 +38,6 @@ jobs:
         with:
           pattern: '^(.{60}[^ ]*).\n*'
           error: 'Subject too long (max 60)'
-          excludeDescription: 'true' # optional: this excludes the description body of a pull request
-          excludeTitle: 'false' # optional: this excludes the title of a pull request
           checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
       - name: Check for Resolves / Fixes
         uses: gsactions/commit-message-checker@v1
