@@ -35,8 +35,8 @@ jobs:
       - name: Check Line Length
         uses: gsactions/commit-message-checker@v1
         with:
-          pattern: '^[^#].{100}'
-          error: 'The maximum line length of 100 characters is exceeded.'
+          pattern: '^.+(\n.{0,72})*$'
+          error: 'The maximum line length of 72 characters is exceeded.'
           excludeDescription: 'false' # optional: this excludes the description body of a pull request
           excludeTitle: 'true' # optional: this excludes the title of a pull request
           checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
