@@ -30,7 +30,7 @@ inputs:
 
 runs:
   using: node12
-  main: dist/gsaction.js
+  main: dist/index.js
 branding:
   icon: 'check'
   color: 'blue'
