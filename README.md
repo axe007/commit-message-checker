@@ -12,7 +12,7 @@ breaks.
 
 Designed to be very flexible in usage: you can split checks into various
 workflows, using action types on pull request to listen on, define branches
-for pushes etc. et
+for pushes etc. e
 
 ## Configuration
 
