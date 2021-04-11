@@ -15,4 +15,4 @@ jobs:
           # Optionally set the body character limit (default `72`)
           body_limit: 100
           # Optionally set the remote branch name to merge (default `master`)
-          remote_branch: dev
+          # remote_branch: dev
