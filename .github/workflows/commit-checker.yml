@@ -27,12 +27,6 @@ jobs:
     name: Check Commit Message
     runs-on: ubuntu-latest
     steps:
-      - name: Get PR Commits
-        id: 'get-pr-commits'
-        uses: axe007/get-pr-commits@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Check Subject Line Length
         uses: axe007/commit-message-checker@v1.0
         with:
