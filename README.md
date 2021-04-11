@@ -40,12 +40,12 @@ jobs:
     steps:
       - name: Get PR Commits
         id: 'get-pr-commits'
-        uses: tim-actions/get-pr-commits@master
+        uses: axe007/get-pr-commits@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check Subject Line Length
-        uses: tim-actions/commit-message-checker-with-regex@v1.0.0
+        uses: axe007/commit-message-checker@v1.0
         with:
           commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: '^.{0,75}(\n.*)*$'
@@ -53,7 +53,7 @@ jobs:
 
       - name: Check Body Line Length
         if: ${{ success() || failure() }}
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        uses: axe007/commit-message-checker@v1.0
         with:
           commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: '^.+(\n.{0,72})*$'
@@ -61,7 +61,7 @@ jobs:
 
       - name: Check Fixes
         if: ${{ success() || failure() }}
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        uses: axe007/commit-message-checker@v1.0
         with:
           commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: '\s*Fixes\s*:?\s*(#\d+|github\.com\/kata-containers\/[a-z-.]*#\d+)'
@@ -70,7 +70,7 @@ jobs:
 
       - name: Check subsystem
         if: ${{ success() || failure() }}
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        uses: axe007/commit-message-checker@v1.0
         with:
           commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: '^[\h]*([^:\h\n]+)[\h]*:'
@@ -126,4 +126,5 @@ Runs all of the above commands.
 
 ## License
 
+Based on previous work on https://github.com/GsActions/commit-message-checker and https://github.com/tim-actions.
 This project is released under the terms of the [MIT License](LICENSE)
