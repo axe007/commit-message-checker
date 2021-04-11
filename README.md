@@ -24,52 +24,7 @@ More information about `pattern` and `flags` can be found in the
 ### Example Workflow
 
 ```yml
-name: 'Commit Message Check'
-on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-      - synchronize
-
-jobs:
-  check-commit-message:
-    name: Check Commit Message
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Subject Line Length
-        uses: axe007/commit-message-checker@v1.0
-        with:
-          commits: ${{ steps.get-pr-commits.outputs.commits }}
-          pattern: '^.{0,75}(\n.*)*$'
-          error: 'Subject too long (max 75)'
-
-      - name: Check Body Line Length
-        if: ${{ success() || failure() }}
-        uses: axe007/commit-message-checker@v1.0
-        with:
-          commits: ${{ steps.get-pr-commits.outputs.commits }}
-          pattern: '^.+(\n.{0,72})*$'
-          error: 'Body line too long (max 72)'
-
-      - name: Check Fixes
-        if: ${{ success() || failure() }}
-        uses: axe007/commit-message-checker@v1.0
-        with:
-          commits: ${{ steps.get-pr-commits.outputs.commits }}
-          pattern: '\s*Fixes\s*:?\s*(#\d+|github\.com\/kata-containers\/[a-z-.]*#\d+)'
-          error: 'No "Fixes" found'
-          one_pass_all_pass: 'true'
-
-      - name: Check subsystem
-        if: ${{ success() || failure() }}
-        uses: axe007/commit-message-checker@v1.0
-        with:
-          commits: ${{ steps.get-pr-commits.outputs.commits }}
-          pattern: '^[\h]*([^:\h\n]+)[\h]*:'
-          error: 'Failed to find subsystem in subject'
-
+name: 'Commit Message Checker'
 
 ```
 
@@ -120,5 +75,5 @@ Runs all of the above commands.
 
 ## License
 
-Based on previous work on https://github.com/GsActions/commit-message-checker and https://github.com/tim-actions.
+Based on previous work on https://github.com/GsActions/commit-message-checker.
 This project is released under the terms of the [MIT License](LICENSE)
