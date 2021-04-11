@@ -32,19 +32,8 @@ jobs:
           subject_limit: 60
           # Optionally set the body character limit (default `72`)
           body_limit: 100
-          # Optionally set the remote branch name to merge (default `master`)
-          # remote_branch: dev
-
-      - name: Verify commit messages follow best practices in CI
-        uses: platisd/bad-commit-message-blocker@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Optionally set the subject character limit (default `50`)
-          subject_limit: 60
-          # Optionally set the body character limit (default `72`)
-          body_limit: 100
           
-      - name: Check Commit Type
+      - name: Check Commit Title
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: '\[(BUGFIX|DOCS|FEATURE|TASK)\] .+$'
@@ -53,7 +42,7 @@ jobs:
           accessToken: ${{ secrets.GITHUB_TOKEN }}
           excludeDescription: 'true'
 
-      - name: Check for Resolves / Fixes
+      - name: Check for Linkage to an Issue
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: '\s*(Implements|Contributes|Resolves|Fixes)\s*:?\s*(#\d+|github\.com\/axe007\/[a-z-.]*#\d+)'
