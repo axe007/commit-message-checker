@@ -6,7 +6,7 @@ on: # rebuild any PRs and main branch changes
       - master
       - 'releases/*'
     paths-ignore:
-    - '.github/workflows'
+      - '*/workflows/*'
 
 jobs:
   build: # make sure build/ci work properly
