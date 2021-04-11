@@ -28,9 +28,10 @@ jobs:
       - name: Check Commit Type
         uses: gsactions/commit-message-checker@v1
         with:
-          pattern: '\[[^]]+\] .+$'
-          flags: 'gm'
+          pattern: '\[(BUGFIX|DOCS|FEATURE|TASK)\] .+$'
           error: 'Your first line has to contain a commit type like "[BUGFIX]".'
+          checkAllCommitMessages: 'true'
+          accessToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Check Line Length
         uses: gsactions/commit-message-checker@v1
         with:
@@ -44,4 +45,4 @@ jobs:
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: '^.+(Implements|Contributes|Resolves|Fixes): \#[0-9]+$'
-          error: 'You need at least one "Resolves|Fixes: #<issue number>" line.'
+          error: 'You need at least one "Implements|Contributes|Resolves|Fixes: #<issue number>" line.'
