@@ -1,6 +1,6 @@
 # Commit Messages (in Pull Request) Checker with regex
 
-![Version](https://img.shields.io/github/v/release/gsactions/commit-message-checker?style=flat-square)
+![Version](https://img.shields.io/github/v/release/axe007/commit-message-checker?style=flat-square)
 ![Test](https://github.com/gsactions/commit-message-checker/workflows/build-test/badge.svg)
 
 A GitHub action that checks that commit messages match a regex pattern. The
