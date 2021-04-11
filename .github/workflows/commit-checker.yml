@@ -22,25 +22,24 @@ on:
 
 jobs:
   check-commit-message:
-    name: Check Commit Message
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - name: Check Commit Type
-        uses: gsactions/commit-message-checker@v1
+      - name: Verify commit messages follow best practices in CI
+        uses: platisd/bad-commit-message-blocker@master
         with:
-          pattern: '\[(BUGFIX|DOCS|FEATURE|TASK)\] .+$'
-          error: 'Your first line has to contain a commit type like "[BUGFIX]".'
-          checkAllCommitMessages: 'true'
-          accessToken: ${{ secrets.GITHUB_TOKEN }}
-          excludeDescription: 'true'
-      - name: Check Subject Line Length
-        uses: gsactions/commit-message-checker@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Optionally set the subject character limit (default `50`)
+          subject_limit: 60
+          # Optionally set the body character limit (default `72`)
+          body_limit: 100
+          # Optionally set the remote branch name to merge (default `master`)
+          # remote_branch: dev
+
+      - name: Verify commit messages follow best practices in CI
+        uses: platisd/bad-commit-message-blocker@master
         with:
-          pattern: '^(.{60}[^ ]*).\n*'
-          error: 'Subject too long (max 60)'
-          checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
-      - name: Check for Resolves / Fixes
-        uses: gsactions/commit-message-checker@v1
-        with:
-          pattern: '\s*(Implements|Contributes|Resolves|Fixes)\s*:?\s*(#\d+|github\.com\/axe007\/[a-z-.]*#\d+)'
-          error: 'You need at least one "Implements|Contributes|Resolves|Fixes: #<issue number>" line.'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Optionally set the subject character limit (default `50`)
+          subject_limit: 60
+          # Optionally set the body character limit (default `72`)
+          body_limit: 100
