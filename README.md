@@ -8,7 +8,7 @@ action is able to act on pull request and push events and check the pull
 request title and body or the commit message of the commits of a push.
 
 On pull requests the title and body are concatenated delimited by two line
-breaks.
+breaks. Something.
 
 Designed to be very flexible in usage: you can split checks into various
 workflows, using action types on pull request to listen on, define branches
